@@ -6,6 +6,7 @@ import { StyleSheet, Text, View, Image, TextInput, Pressable, ScrollView } from 
 
 
 export default function Login({ navigation }) {
+    const [userName, setuserName] = useState("");
     const [passSet, setPassSet] = useState(false);
     var passEye;
     if (passSet) {
@@ -29,6 +30,8 @@ export default function Login({ navigation }) {
                         style={styles.textfild}
                         placeholder="Username"
                         selectionColor={'black'}
+                        value={userName}
+                        onChangeText={usernameText => setuserName(usernameText)}
                     />
                 </View>
                 <View style={styles.containerInfo}>
