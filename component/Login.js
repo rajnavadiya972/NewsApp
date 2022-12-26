@@ -75,7 +75,7 @@ export default function Login({ navigation }) {
                 <Icon name="mail-outline" style={{ marginLeft: 'auto', marginRight: 'auto' }} size={25} />
             </View>
             <View style={{ marginTop: 15, marginBottom: 15 }}>
-                <Text style={{ marginLeft: 'auto', marginRight: 'auto' }}>Don't have account? <Text style={{ fontWeight: '600' ,color:'#68a0cf'}}>Register</Text></Text>
+                <Text style={{ marginLeft: 'auto', marginRight: 'auto' }}>Don't have account? <Text style={{ fontWeight: '600' ,color:'#68a0cf'}} onPress={() => navigation.navigate('Register')}>Register</Text></Text>
             </View>
         </ScrollView>
     );
