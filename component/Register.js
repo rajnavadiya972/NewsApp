@@ -27,7 +27,7 @@ export default function Verify() {
         passEnter =
             <>
                 <View style={styles.containerInfo}>
-                    <Text style={styles.text}>Enter New Password</Text>
+                    <Text style={styles.text}>Enter Password</Text>
                     <View>
                         <TextInput
                             style={styles.textfildPass}
@@ -41,11 +41,11 @@ export default function Verify() {
                     </View>
                 </View>
                 <View style={styles.containerInfo}>
-                    <Text style={styles.text}>Re-Enter New Password</Text>
+                    <Text style={styles.text}>Re-Enter Password</Text>
                     <View>
                         <TextInput
                             style={styles.textfildPass}
-                            placeholder="Password"
+                            placeholder="Re-Enter Password"
                             selectionColor={'black'}
                             autoCapitalize="none"
                             autoCorrect={false}
@@ -64,7 +64,6 @@ export default function Verify() {
         verifyButton = <Pressable
             style={styles.submit}
             underlayColor='#fff'
-            // onPress={() => setverifyPass(false)}
             android_ripple={{ color: '#fff' }}>
             <Text style={styles.submitText}>Sign Up</Text>
         </Pressable>
@@ -114,7 +113,7 @@ export default function Verify() {
                     <Text style={styles.text}>Verification Code</Text>
                     <TextInput
                         style={styles.textfild}
-                        placeholder="Verificatio Code"
+                        placeholder="Verification Code"
                         selectionColor={'black'}
                         keyboardType='numeric'
                     />
@@ -167,6 +166,7 @@ const styles = StyleSheet.create({
         marginLeft: 'auto',
         width: '40%',
         marginTop: 30,
+        marginBottom:10,
         paddingTop: 10,
         paddingBottom: 10,
         backgroundColor: '#68a0cf',
