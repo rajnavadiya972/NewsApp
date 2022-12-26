@@ -66,7 +66,7 @@ export default function Verify() {
             underlayColor='#fff'
             // onPress={() => setverifyPass(false)}
             android_ripple={{ color: '#fff' }}>
-            <Text style={styles.submitText}>Sign in</Text>
+            <Text style={styles.submitText}>Sign Up</Text>
         </Pressable>
     } else {
         verifyButton = <Pressable

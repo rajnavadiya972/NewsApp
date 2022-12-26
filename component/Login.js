@@ -60,7 +60,7 @@ export default function Login({ navigation }) {
                 style={styles.submit}
                 underlayColor='#fff'
                 android_ripple={{ color: '#fff' }}>
-                <Text style={styles.submitText}>Sign Up</Text>
+                <Text style={styles.submitText}>Sign In</Text>
             </Pressable>
             <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 15, marginHorizontal: 10 }}>
                 <View style={{ flex: 1, height: 1, backgroundColor: 'black' }} />
@@ -75,7 +75,7 @@ export default function Login({ navigation }) {
                 <Icon name="mail-outline" style={{ marginLeft: 'auto', marginRight: 'auto' }} size={25} />
             </View>
             <View style={{ marginTop: 15, marginBottom: 15 }}>
-                <Text style={{ marginLeft: 'auto', marginRight: 'auto' }}>Don't have account?<Text style={{ fontWeight: '600' }}>Register</Text></Text>
+                <Text style={{ marginLeft: 'auto', marginRight: 'auto' }}>Don't have account? <Text style={{ fontWeight: '600' ,color:'#68a0cf'}}>Register</Text></Text>
             </View>
         </ScrollView>
     );
