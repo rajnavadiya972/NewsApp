@@ -5,7 +5,7 @@ import Icons from 'react-native-vector-icons/SimpleLineIcons';
 import { StyleSheet, Text, View, Image, TextInput, Pressable, ScrollView } from 'react-native';
 
 
-export default function Login() {
+export default function Login({ navigation }) {
     const [passSet, setPassSet] = useState(false);
     var passEye;
     if (passSet) {
@@ -53,7 +53,7 @@ export default function Login() {
                         />
                         {passEye}
                     </View>
-                    <Text style={{ marginLeft: 'auto', marginRight: 10, marginTop: 10 }}>Forgot Password?</Text>
+                    <Text style={{ marginLeft: 'auto', marginRight: 10, marginTop: 10, color: '#68a0cf' }} onPress={() => navigation.navigate('Verify')}>Forgot Password?</Text>
                 </View>
             </View>
             <Pressable
@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
     },
     text: {
         marginLeft: 10,
-        fontWeight:'500'
+        fontWeight: '500'
     },
     submit: {
         marginRight: 'auto',
