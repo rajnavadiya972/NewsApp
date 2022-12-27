@@ -36,19 +36,19 @@ const OnSwipe=({navigation})=>{
               backgroundColor: '#fff',
               image: <Image source={require('../images/firstWelcome.png')} style={{width:300,height:300}} />,
               title: 'Welcome',
-              subtitle: 'Done with React Native Onboarding Swiper',
+              subtitle: "Meet the Greatest News.",
             },
             {
                 backgroundColor: '#fff',
                 image: <Image source={require('../images/update.png')} style={{width:300,height:300}} />,
                 title: 'Exploring',
-                subtitle: 'Done with React Native Onboarding Swiper',
+                subtitle: "We know what you are Searching.",
             },
             {
                 backgroundColor: '#fff',
                 image: <Image source={require('../images/explore.png')} style={{width:300,height:300}} />,
                 title: 'Daily Updates',
-                subtitle: 'Done with React Native Onboarding Swiper',
+                subtitle: 'Read the World Today.',
             },
             ]}
         />
