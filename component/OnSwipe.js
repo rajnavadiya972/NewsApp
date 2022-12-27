@@ -30,7 +30,7 @@ const OnSwipe=({navigation})=>{
         NextButtonComponent={Next}
         DoneButtonComponent={Done}
         onSkip={()=>navigation.navigate("Login")}
-        onDone={()=>navigation.navigate("Verify")}
+        onDone={()=>navigation.navigate("Login")}
              pages={[
             {
               backgroundColor: '#fff',
