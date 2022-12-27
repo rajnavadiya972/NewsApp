@@ -1,7 +1,6 @@
 import Login from './component/Login.js';
 import Verify from './component/Verify';
 import Register from './component/Register';
-import { useColorScheme } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
@@ -18,7 +17,7 @@ export default function App() {
   return (
     <>
       <NavigationContainer theme={MyTheme}>
-        <Stack.Navigator initialRouteName="Login" screenOptions={{headerShown:false}} carsS>
+        <Stack.Navigator initialRouteName="Login" screenOptions={{headerShown:false}}>
           <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="Verify" component={Verify} />
           <Stack.Screen name="Register" component={Register} />
