@@ -1,4 +1,5 @@
 import logo from '../images/logo1.png';
+import GoogleSignin from './GoogleSignUp';
 import React, { useState } from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Icons from 'react-native-vector-icons/SimpleLineIcons';
@@ -57,6 +58,7 @@ export default function Login({ navigation }) {
                 </View>
             </View>
             <Pressable
+                onPress={()=>navigation.navigate("BottomHome")}
                 style={styles.submit}
                 underlayColor='#fff'
                 android_ripple={{ color: '#fff' }}>
@@ -70,9 +72,10 @@ export default function Login({ navigation }) {
                 <View style={{ flex: 1, height: 1, backgroundColor: 'black' }} />
             </View>
             <View style={{ flexDirection: 'row', marginTop: 20, marginHorizontal: 10 }}>
-                <Icons name="social-google" style={{ marginLeft: 'auto', marginRight: 'auto' }} size={25} />
+                {/* <Icons name="social-google" style={{ marginLeft: 'auto', marginRight: 'auto' }} size={25} />
                 <Icons name="social-facebook" style={{ marginLeft: 'auto', marginRight: 'auto' }} size={25} />
-                <Icon name="mail-outline" style={{ marginLeft: 'auto', marginRight: 'auto' }} size={25} />
+                <Icon name="mail-outline" style={{ marginLeft: 'auto', marginRight: 'auto' }} size={25} /> */}
+                <GoogleSignin />
             </View>
             <View style={{ marginTop: 15, marginBottom: 15 }}>
                 <Text style={{ marginLeft: 'auto', marginRight: 'auto' }}>Don't have account? <Text style={{ fontWeight: '600' ,color:'#68a0cf'}} onPress={() => navigation.navigate('Register')}>Register</Text></Text>
