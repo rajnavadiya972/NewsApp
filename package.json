@@ -39,5 +39,16 @@
   "devDependencies": {
     "@babel/core": "^7.12.9"
   },
-  "private": true
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rajnavadiya972/NewsApp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rajnavadiya972/NewsApp/issues"
+  },
+  "homepage": "https://github.com/rajnavadiya972/NewsApp#readme",
+  "description": ""
 }
