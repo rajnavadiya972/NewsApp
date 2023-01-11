@@ -20,6 +20,9 @@
     "@react-navigation/native-stack": "^6.9.7",
     "expo": "~47.0.9",
     "expo-auth-session": "~3.8.0",
+    "expo-document-picker": "~11.0.1",
+    "expo-image-picker": "~14.0.2",
+    "expo-image-picker-multiple": "^1.4.1",
     "expo-random": "~13.0.0",
     "expo-status-bar": "~1.4.2",
     "expo-updates": "~0.15.6",
@@ -29,7 +32,12 @@
     "react": "18.1.0",
     "react-dom": "^18.1.0",
     "react-native": "0.70.5",
+<<<<<<< HEAD
     "react-native-elements": "^3.4.3",
+=======
+    "react-native-document-picker": "^8.1.3",
+    "react-native-image-picker": "^5.0.0",
+>>>>>>> 5eb268eec016c7ff941f8b600b2dba75a7dce122
     "react-native-onboarding-swiper": "^1.2.0",
     "react-native-paper": "^5.1.3",
     "react-native-pell-rich-editor": "^1.8.8",
