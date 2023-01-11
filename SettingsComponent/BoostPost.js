@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
 import { actions, RichEditor, RichToolbar } from 'react-native-pell-rich-editor';
-import { StyleSheet, Text, TextArea, TextInput, TouchableOpacity, View, Pressable } from 'react-native';
+import { StyleSheet, Text, TextArea, TextInput, TouchableOpacity, View, Pressable,Image } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import * as ImagePicker from "expo-image-picker/src/ImagePicker";
 
@@ -34,7 +34,7 @@ export default function BoostPost() {
                 {selectImgUrl !== null ? <View className="w-full h-52 ">
                     <Image
                         source={{ uri: selectImgUrl.localUri }}
-                        style={{ resizeMode: "cover", width: "50%", height: "50%" }}
+                        style={{ resizeMode: "cover", width: 100, height: 100 }}
                     />
                 </View> : <></>}
             </View>
@@ -62,7 +62,7 @@ export default function BoostPost() {
                 placeholderTextColor={'black'}
                 selectionColor={'black'}
             />
-            <View style={{ marginTop: 10, marginHorizontal: 20, flexDirection: 'column' }}>
+            <View style={{ marginTop: 10, marginHorizontal: 10, flexDirection: 'column' }}>
                 <RichEditor
                     ref={richText}
                     onChange={richTextHandle}

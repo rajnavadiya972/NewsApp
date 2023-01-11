@@ -1,11 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { StyleSheet, View, Image, TextInput, Text } from 'react-native';
+import { StyleSheet, View, Image, TextInput, Text, TouchableOpacity } from 'react-native';
 import ProfilePhoto from '../images/logo1.png';
 import Icon from 'react-native-vector-icons/Ionicons';
+import * as ImagePicker from "expo-image-picker/src/ImagePicker";
 
 
 const MyProfile = () => {
+    const [imgUrl, setImgUrl] = useState({})
+    const [selectImgUrl, setSelectImgUrl] = useState(null)
+
+    let openImagePickerForAadharBackAsync = async () => {
+        let pickerResult = await ImagePicker.launchImageLibraryAsync();
+        setSelectImgUrl({ localUri: pickerResult.uri });
+        setImgUrl(pickerResult);
+        console.log(pickerResult)
+    };
 
     const [catagory, setCatagory] = useState(1);
     var mediaIcon, visitorIcon;
@@ -24,7 +34,7 @@ const MyProfile = () => {
 
     var uploadMedia;
     if (catagory === 2) {
-        uploadMedia = <Text style={{color:'#68a0cf',fontSize:15}}>Upload Media</Text>
+        uploadMedia = <Text style={{ color: '#68a0cf', fontSize: 15 }}>Upload Media</Text>
     }
 
     return (
@@ -34,7 +44,9 @@ const MyProfile = () => {
             </View>
             <View style={styles.ProfContainer}>
                 <Image source={ProfilePhoto} style={{ width: 130, height: 130, borderRadius: 100, marginTop: 10 }} />
-                <Text style={{ color: '#68a0cf', marginVertical: 10 }}>Change Profile Photo</Text>
+                <TouchableOpacity onPress={openImagePickerForAadharBackAsync} style={{ justifyContent: 'center', alignItems: 'center' }}>
+                    <Text style={{ color: '#68a0cf', marginVertical: 10 }}>Change Profile Photo</Text>
+                </TouchableOpacity>
             </View>
             <View style={styles.containerInfo}>
                 <TextInput
@@ -104,7 +116,7 @@ const styles = StyleSheet.create({
         marginRight: 10,
     },
     uploadFile: {
-        marginLeft:20,
-        marginVertical:15,
+        marginLeft: 20,
+        marginVertical: 15,
     }
 });

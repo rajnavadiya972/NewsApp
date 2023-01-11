@@ -73,7 +73,7 @@ import {
         >
           <Image
             style={styles.gimage}
-            source={require("../images/n2.gif")}
+            source={require("../images/google.png")}
           />
           <Text style={styles.googleContinue}>Continue With Google</Text>
         </Pressable>
@@ -103,8 +103,9 @@ import {
       color: "grey",
     },
     gimage: {
-      height: 30,
-      width: 40,
+      height: 25,
+      width: 25,
+      marginRight:10,
     },
   });
   

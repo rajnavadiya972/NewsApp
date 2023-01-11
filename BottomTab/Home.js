@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View,SafeAreaView  } from 'react-native';
 import React, { useState } from 'react';
 import { SearchBar } from 'react-native-elements';
 
@@ -9,7 +9,7 @@ const Home = () => {
     setSearch(search);
   };
   return (
-    <View>
+    <SafeAreaView>
       <View style={{ alignItems: 'center', shadowColor: 'black', shadowOpacity: 1, shadowRadius: 2, shadowOffset: { height: 1, width: 1 } }}>
         <Text style={styles.header}>Home</Text>
       </View>
@@ -24,7 +24,7 @@ const Home = () => {
           placeholderTextColor={'#111111'}
         />
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 
