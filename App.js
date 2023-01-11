@@ -5,6 +5,8 @@ import OnSwipe from './component/OnSwipe';
 import BottomHome from './component/BottomHome';
 import SettingIn from './SettingsTab/SettingsIn.js';
 import Setting from './BottomTab/Setting.js';
+import Editor from './SettingsComponent/Editor.js';
+import SearchBar from './SettingsComponent/Search'
 import { useColorScheme } from 'react-native';
 import  SettingProfile from './SettingsComponent/MyProfile'
 import { NavigationContainer } from '@react-navigation/native';
@@ -32,6 +34,8 @@ export default function App() {
           <Stack.Screen name="SettingIn" component={SettingIn} />
           <Stack.Screen name="Setting" component={Setting} />
           <Stack.Screen name="SettingProfile" component={SettingProfile} />
+          <Stack.Screen name="Editor" component={Editor} />
+          <Stack.Screen name="Search" component={SearchBar} />
         </Stack.Navigator>
       </NavigationContainer>
       {/* <GoogleLogin /> */}
