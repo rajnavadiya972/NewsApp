@@ -38,9 +38,6 @@ export default function App() {
           <Stack.Screen name="Search" component={SearchBar} />
         </Stack.Navigator>
       </NavigationContainer>
-      {/* <GoogleLogin /> */}
     </>
   );
 }
-
-
