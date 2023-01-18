@@ -24,7 +24,7 @@ export default function App() {
   return (
     <>
       <NavigationContainer theme={MyTheme}>
-        <Stack.Navigator initialRouteName="Login" screenOptions={{headerShown:false}}>
+        <Stack.Navigator initialRouteName="onSwipe" screenOptions={{headerShown:false}}>
           <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="Verify" component={Verify} />
           <Stack.Screen name="Register" component={Register} />
