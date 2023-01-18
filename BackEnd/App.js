@@ -1,14 +1,13 @@
 const express=require('express');
 require('dotenv').config();
-const mongoose=require('mongoose');
-mongoose.connect(process.env.MONGO_URI,{useNewUrlParser:true,useUnifiedTopology:true}).then(()=>{
-    console.log('db connected')
-}).catch((err)=>{
-    console.log(err);
-})
-
+require('./db');
+const User=require('./user');
 const app=express();
-
+app.post('/create-user',async (req,res)=>{
+    const user=await User({username:'vatsal',password:'vatsal71'})
+    await user.save();
+    res.json(user);
+})
 app.get('/',(req,res)=>{
     res.send('<h1>Hello</h1>');
 });
