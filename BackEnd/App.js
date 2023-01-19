@@ -3,8 +3,11 @@ require('dotenv').config();
 require('./db');
 const User=require('./user');
 const app=express();
+const username='vat71';
 app.post('/create-user',async (req,res)=>{
-    const user=await User({username:'vatsal',password:'vatsal71'})
+    const newuser=await User.isThisEmailUse(username)
+    if(!newuser) return res.json({success:false,message:'username has already taken'})
+    const user=await User({username:username,password:'vatsal71'})
     await user.save();
     res.json(user);
 })
