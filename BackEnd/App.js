@@ -1,17 +1,40 @@
-const express=require('express');
+const express = require('express');
 require('dotenv').config();
-const mongoose=require('mongoose');
-mongoose.connect(process.env.MONGO_URI,{useNewUrlParser:true,useUnifiedTopology:true}).then(()=>{
-    console.log('db connected')
-}).catch((err)=>{
-    console.log(err);
+require('./models/db')
+
+const User = require('./models/user')
+const app = express();
+const userRouter=require('./routes/user')
+
+// app.use((req, res, next) => {
+//     req.on('data',chunk=>{
+//         const data=JSON.parse(chunk);
+//         req.body=data;
+//         next();
+//     })
+// })
+
+//same as above
+app.use(express.json())
+
+//==============check password===========
+// const test=async (email,password)=>{
+//     const user=await User.findOne({email:email});
+//     const result=await user.comparePassword(password);
+//     console.log(result)
+// }
+// test('raj1@gmail.com','raj12346')
+
+//=================================
+
+app.get('/test', (req, res) => {
+    res.send('hello world')
 })
 
-const app=express();
-
-app.get('/',(req,res)=>{
+app.use(userRouter)
+app.get('/', (req, res) => {
     res.send('<h1>Hello</h1>');
 });
-app.listen(8000,()=>{
+app.listen(8000, () => {
     console.log('port is listening');
 });

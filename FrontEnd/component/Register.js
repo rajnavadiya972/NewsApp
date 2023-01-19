@@ -5,6 +5,55 @@ import { StyleSheet, Text, View, Image, TextInput, Pressable, ScrollView } from 
 
 
 export default function Verify() {
+    const isValidObjectField = (obj) => {
+        return Object.values(obj).every(value => value.trim())
+    }
+
+    const updateError = (error, stateUpdater) => {
+        stateUpdater(error);
+        setTimeout(() => {
+            stateUpdater('');
+        }, 2500);
+    }
+
+    const isValidEmail = (value) => {
+        const regx = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+        return regx.test(value);
+    }
+
+    const [userInfo, setUserInfo] = useState({
+        username: '',
+        email: '',
+        password: '',
+        confirmPassword: ''
+    });
+
+    const [error, setError] = useState('')
+    const { username, email, password, confirmPassword } = userInfo;
+
+    const handeOnChangeText = (value, fieldName) => {
+        setUserInfo({ ...userInfo, [fieldName]: value })
+    }
+
+    const isValidForm = () => {
+        if (!isValidObjectField(userInfo)) return updateError('Required all fields', setError);
+
+        if (!username.trim() || username.length < 3) return updateError('Invalid name!', setError);
+
+        if (!isValidEmail(email)) return updateError('Invalid email!', setError);
+
+        if (!password.trim() || password.length < 8) return updateError('password is less then 8 character!', setError);
+
+        if (password !== confirmPassword) return updateError('password does not same!', setError);
+    }
+
+    const submitForm = () => {
+        setverifyPass(true)
+        if (isValidForm()) {
+            console.log(userInfo);
+        }
+    }
+
     const [passSet, setPassSet] = useState(false);
     var passEye;
     if (passSet) {
@@ -23,13 +72,15 @@ export default function Verify() {
 
     const [verifyPass, setverifyPass] = useState(false);
     var passEnter;
-    if(verifyPass){
+    if (verifyPass) {
         passEnter =
             <>
                 <View style={styles.containerInfo}>
                     <Text style={styles.text}>Enter Password</Text>
                     <View>
                         <TextInput
+                            value={password}
+                            onChangeText={(value) => handeOnChangeText(value, 'password')}
                             style={styles.textfildPass}
                             placeholder="Password"
                             selectionColor={'black'}
@@ -44,6 +95,8 @@ export default function Verify() {
                     <Text style={styles.text}>Re-Enter Password</Text>
                     <View>
                         <TextInput
+                            value={confirmPassword}
+                            onChangeText={(value) => handeOnChangeText(value, 'confirmPassword')}
                             style={styles.textfildPass}
                             placeholder="Re-Enter Password"
                             selectionColor={'black'}
@@ -55,7 +108,7 @@ export default function Verify() {
                     </View>
                 </View>
             </>
-    }else{
+    } else {
         passEnter = <View></View>
     }
 
@@ -71,7 +124,7 @@ export default function Verify() {
         verifyButton = <Pressable
             style={styles.submit}
             underlayColor='#fff'
-            onPress={() => setverifyPass(true)}
+            onPress={submitForm()}
             android_ripple={{ color: '#fff' }}>
             <Text style={styles.submitText}>Verify</Text>
         </Pressable>
@@ -86,9 +139,12 @@ export default function Verify() {
                 />
             </View>
             <View>
+                {error?<Text style={{color:'red',fontSize:18,textAlign:'center'}}>{error}</Text>:null}
                 <View style={styles.containerInfo}>
                     <Text style={styles.text}>Username</Text>
                     <TextInput
+                        value={username}
+                        onChangeText={(value) => handeOnChangeText(value, 'username')}
                         style={styles.textfild}
                         placeholder="Username"
                         selectionColor={'black'}
@@ -97,6 +153,8 @@ export default function Verify() {
                 <View style={styles.containerInfo}>
                     <Text style={styles.text}>Email</Text>
                     <TextInput
+                        value={email}
+                        onChangeText={(value) => handeOnChangeText(value, 'email')}
                         style={styles.textfild}
                         placeholder="Email"
                         autoCapitalize="none"
@@ -159,14 +217,14 @@ const styles = StyleSheet.create({
     },
     text: {
         marginLeft: 10,
-        fontWeight:'500'
+        fontWeight: '500'
     },
     submit: {
         marginRight: 'auto',
         marginLeft: 'auto',
         width: '40%',
         marginTop: 30,
-        marginBottom:10,
+        marginBottom: 10,
         paddingTop: 10,
         paddingBottom: 10,
         backgroundColor: '#68a0cf',
