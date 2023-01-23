@@ -18,6 +18,7 @@
     "@react-navigation/material-bottom-tabs": "^6.2.10",
     "@react-navigation/native": "^6.1.1",
     "@react-navigation/native-stack": "^6.9.7",
+    "axios": "^1.2.3",
     "dotenv": "^16.0.3",
     "expo": "~47.0.9",
     "expo-auth-session": "~3.8.0",
@@ -29,6 +30,7 @@
     "expo-updates": "~0.15.6",
     "expo-web-browser": "~12.0.0",
     "express": "^4.18.2",
+    "formik": "^2.2.9",
     "mongoose": "^6.8.4",
     "nodemon": "^2.0.20",
     "pod-install": "^0.1.38",
@@ -46,7 +48,8 @@
     "react-native-screens": "~3.18.0",
     "react-native-vector-icons": "^9.2.0",
     "react-native-web": "~0.18.9",
-    "react-native-webview": "11.23.1"
+    "react-native-webview": "11.23.1",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"

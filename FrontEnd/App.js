@@ -7,10 +7,13 @@ import SettingIn from './SettingsTab/SettingsIn.js';
 import Setting from './BottomTab/Setting.js';
 import Editor from './SettingsComponent/Editor.js';
 import SearchBar from './SettingsComponent/Search'
-import  SettingProfile from './SettingsComponent/MyProfile';
+import SettingProfile from './SettingsComponent/MyProfile';
 import BoostPost from './SettingsComponent/BoostPost.js';
+import axios from 'axios';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { useEffect } from 'react';
+
 
 const MyTheme = {
   dark: false,
@@ -22,10 +25,22 @@ const MyTheme = {
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+
+  const fetchApi = async () => {
+    try {
+      const res = await axios.get('http://192.168.1.6:8000/')
+      console.log(res)
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  useEffect(() => {
+    fetchApi();
+  }, []);
   return (
     <>
       <NavigationContainer theme={MyTheme}>
-        <Stack.Navigator initialRouteName="onSwipe" screenOptions={{headerShown:false}}>
+        <Stack.Navigator initialRouteName="onSwipe" screenOptions={{ headerShown: false }}>
           <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="Verify" component={Verify} />
           <Stack.Screen name="Register" component={Register} />

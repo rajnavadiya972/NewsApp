@@ -6,8 +6,8 @@ exports.validateUserSignUp = [
         .not()
         .isEmpty()
         .withMessage('username is empty')
-        .isLength({ min: 3, max: 20 })
-        .withMessage('Name must be within 3 to 20 character'),
+        .isLength({ min: 3 })
+        .withMessage('Name must be within 3 character'),
 
     check('email')
         .normalizeEmail()
@@ -19,8 +19,8 @@ exports.validateUserSignUp = [
         .not()
         .isEmpty()
         .withMessage('password is empty')
-        .isLength({ min: 8, max: 20 })
-        .withMessage('password must be within 8 to 20 character'),
+        .isLength({ min: 8 })
+        .withMessage('password must be within 8 character'),
 
     check('confirmPassword')
         .trim()
@@ -49,6 +49,11 @@ exports.validateUserSignIn = [
         .not()
         .isEmpty()
         .withMessage('username / password is required!'),
+
+    check('email')
+        .normalizeEmail()
+        .isEmail()
+        .withMessage('Invalid Email'),
 
     check('password')
         .trim()
