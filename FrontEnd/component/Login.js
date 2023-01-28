@@ -7,6 +7,7 @@ import client from './../api/Client';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Icons from 'react-native-vector-icons/SimpleLineIcons';
 import { StyleSheet, Text, View, Image, TextInput, Pressable, ScrollView } from 'react-native';
+import axios from 'axios';
 
 
 export default function Login({ navigation }) {
@@ -70,10 +71,11 @@ export default function Login({ navigation }) {
 
     const signUp = async (values, FormikActions) => {
         console.log(values);
-        console.log("Hello");
+        
         const res = await client.post('/signIn', {
             ...values
         });
+        console.log("Hello");
         console.log(res.data);
         if (res.data.success === false) {
             updateError(res.data.message, setError)

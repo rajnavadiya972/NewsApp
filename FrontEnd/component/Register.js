@@ -4,10 +4,10 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import { StyleSheet, Text, View, Image, TextInput, Pressable, ScrollView } from 'react-native';
 import { Formik } from 'formik'
 import * as Yup from 'yup';
-
 import client from './../api/Client';
+import axios from 'axios';
 
-export default function Verify() {
+export default function Verify({ navigation }) {
 
     const validationSchema = Yup.object({
         username: Yup.string().trim().min(3, 'Invalid name').required('name is requierd!'),
@@ -81,9 +81,13 @@ export default function Verify() {
         console.log(values);
         const res = await client.post('/createUser', {
             ...values
-        }).catch(error)
-        {
+        })
+        console.log("Hello");
+        if (res.data.success === false) {
             updateError("This email is already in use", setError)
+        }
+        else{
+            navigation.navigate("Login");
         }
         FormikActions.resetForm();
         FormikActions.setSubmitting(false);
@@ -218,7 +222,7 @@ export default function Verify() {
                                     type='submit'
                                     style={styles.submit}
                                     underlayColor='#fff'
-                                    onPress={(errors && error) ? handleSubmit : null}
+                                    onPress={(errors) ? handleSubmit : null}
                                     android_ripple={{ color: '#fff' }}>
                                     <Text style={styles.submitText}>Sign Up</Text>
                                 </Pressable> :
