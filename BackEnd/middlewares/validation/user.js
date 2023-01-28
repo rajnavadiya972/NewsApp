@@ -22,16 +22,16 @@ exports.validateUserSignUp = [
         .isLength({ min: 8 })
         .withMessage('password must be within 8 character'),
 
-    check('confirmPassword')
-        .trim()
-        .not()
-        .isEmpty()
-        .custom((value, { req }) => {
-            if (value !== req.body.password) {
-                throw new Error('Both password must be same');
-            }
-            return true;
-        })
+    // check('confirmPassword')
+    //     .trim()
+    //     .not()
+    //     .isEmpty()
+    //     .custom((value, { req }) => {
+    //         if (value !== req.body.password) {
+    //             throw new Error('Both password must be same');
+    //         }
+    //         return true;
+    //     })
 ]
 
 exports.userValidation = (req, res, next) => {

@@ -5,8 +5,6 @@ import { StyleSheet, Text, View, Image, TextInput, Pressable, ScrollView } from 
 import { Formik } from 'formik'
 import * as Yup from 'yup';
 
-import {Formik} from 'formik'
-import * as Yup from 'yup'
 import client from './../api/Client';
 
 export default function Verify() {

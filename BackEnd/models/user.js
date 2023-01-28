@@ -17,7 +17,7 @@ const userSchema = new mongoose.Schema({
     },
     confirmPassword: {
         type: String,
-        required: true
+        // required: false
     },
     avtar: {
         type: Buffer
@@ -32,13 +32,13 @@ userSchema.pre('save', function (next) {
             next();
         })
     }
-    if (this.isModified('confirmPassword')) {
-        bcrypt.hash(this.password, 8, (err, hash) => {
-            if (err) return next(err);
-            this.confirmPassword = hash;
-            next();
-        })
-    }
+    // if (this.isModified('confirmPassword')) {
+    //     bcrypt.hash(this.confirmPassword, 8, (err, hash) => {
+    //         if (err) return next(err);
+    //         this.confirmPassword = hash;
+    //         next();
+    //     })
+    // }
 })
 
 

@@ -70,14 +70,16 @@ export default function Login({ navigation }) {
 
     const signUp = async (values, FormikActions) => {
         console.log(values);
-        
+        console.log("Hello");
         const res = await client.post('/signIn', {
             ...values
+        });
+        console.log(res.data);
+        if (res.data.success === false) {
+            updateError(res.data.message, setError)
+            return;
         }
-        ).catch(error)
-        {
-            updateError("username / password does not match", setError)
-        }
+        navigation.navigate("BottomHome");
         FormikActions.resetForm();
         FormikActions.setSubmitting(false);
     }
