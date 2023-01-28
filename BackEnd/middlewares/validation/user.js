@@ -39,7 +39,7 @@ exports.userValidation = (req, res, next) => {
     if (!result.length) return next();
 
     const error = result[0].msg;
-    res.json({ success: false, message: error })
+    res.status(425).json({ success: false, message: error })
 }
 
 

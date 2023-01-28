@@ -23,12 +23,12 @@ exports.userSignIn=async(req,res)=>{
     const {username,email,password}=req.body;
     const user=await User.findOne({username});
     const userEmail=await User.findOne({email});
-    if(!user || !userEmail)return res.json({success:false,message:'username / password does not match'});
+    if(!user || !userEmail)return res.status(425).json({success:false,message:'username / password does not match'});
 
     const isMatch= await user.comparePassword(password);
-    if(!isMatch)return res.json({success:false,message:'username / password does not match'});
-
-
+    if(!isMatch)return res.status(425).json({success:false,message:'username / password does not match'});
+    console.log("success");
     const token=jwt.sign({userId:user._id},process.env.JWT_SECRET,{expiresIn:'1d'})
     res.json({success:true,user,token});
+    // res.status(200).json({success:true});
 }

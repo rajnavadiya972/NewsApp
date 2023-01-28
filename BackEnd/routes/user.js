@@ -10,4 +10,4 @@ router.post('/createPost',isAuth,(req,res)=>{
     res.send('Welcome you are in secret route');
 })
 
-module.exports=router;
+module.exports=router;    

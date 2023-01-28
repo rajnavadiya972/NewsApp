@@ -73,10 +73,14 @@ export default function Login({ navigation }) {
         
         const res = await client.post('/signIn', {
             ...values
-        }
-        ).catch(error)
+        })
+        console.log("Hello Raj");
+        console.log(res.json());
+        if(res.status==200)
         {
-            updateError("username / password does not match", setError)
+            navigation.navigate("BottomHome");
+        }else{
+            updateError("username / password does not match", setError);
         }
         FormikActions.resetForm();
         FormikActions.setSubmitting(false);
