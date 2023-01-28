@@ -32,9 +32,11 @@ app.get('/test', (req, res) => {
 })
 
 app.use(userRouter)
+
 app.get('/', (req, res) => {
     res.send('<h1>Hello</h1>');
 });
+
 app.listen(8000, () => {
     console.log('port is listening');
 });

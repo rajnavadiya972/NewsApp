@@ -20,10 +20,10 @@ exports.createUser=async (req, res) => {
 }
 
 exports.userSignIn=async(req,res)=>{
-    const {username,password}=req.body;
+    const {username,email,password}=req.body;
     const user=await User.findOne({username});
-
-    if(!user)return res.json({success:false,message:'username / password does not match'});
+    const userEmail=await User.findOne({email});
+    if(!user || !userEmail)return res.json({success:false,message:'username / password does not match'});
 
     const isMatch= await user.comparePassword(password);
     if(!isMatch)return res.json({success:false,message:'username / password does not match'});
