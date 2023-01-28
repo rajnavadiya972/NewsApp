@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { StyleSheet, Text, View, Image, TextInput, Pressable, ScrollView } from 'react-native';
 
+import {Formik} from 'formik'
+import * as Yup from 'yup'
 
 export default function Verify() {
     const isValidObjectField = (obj) => {
@@ -45,10 +47,11 @@ export default function Verify() {
         if (!password.trim() || password.length < 8) return updateError('password is less then 8 character!', setError);
 
         if (password !== confirmPassword) return updateError('password does not same!', setError);
+
+        return true;
     }
 
     const submitForm = () => {
-        setverifyPass(true)
         if (isValidForm()) {
             console.log(userInfo);
         }
@@ -117,6 +120,7 @@ export default function Verify() {
         verifyButton = <Pressable
             style={styles.submit}
             underlayColor='#fff'
+            onPress={()=>submitForm()}
             android_ripple={{ color: '#fff' }}>
             <Text style={styles.submitText}>Sign Up</Text>
         </Pressable>
@@ -124,7 +128,7 @@ export default function Verify() {
         verifyButton = <Pressable
             style={styles.submit}
             underlayColor='#fff'
-            onPress={submitForm()}
+            onPress={()=>setverifyPass(true)}
             android_ripple={{ color: '#fff' }}>
             <Text style={styles.submitText}>Verify</Text>
         </Pressable>

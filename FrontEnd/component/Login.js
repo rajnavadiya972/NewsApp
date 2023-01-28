@@ -7,7 +7,56 @@ import { StyleSheet, Text, View, Image, TextInput, Pressable, ScrollView } from 
 
 
 export default function Login({ navigation }) {
-    const [userName, setuserName] = useState("");
+
+    const isValidObjectField = (obj) => {
+        return Object.values(obj).every(value => value.trim())
+    }
+
+    const updateError = (error, stateUpdater) => {
+        stateUpdater(error);
+        setTimeout(() => {
+            stateUpdater('');
+        }, 2500);
+    }
+
+    const isValidEmail = (value) => {
+        const regx = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+        return regx.test(value);
+    }
+
+    const [userInfo, setUserInfo] = useState({
+        username: '',
+        email: '',
+        password: ''
+    });
+
+    const [error, setError] = useState('')
+    const { username, email, password } = userInfo;
+
+    const handeOnChangeText = (value, fieldName) => {
+        setUserInfo({ ...userInfo, [fieldName]: value })
+    }
+
+    const isValidForm = () => {
+        if (!isValidObjectField(userInfo)) return updateError('Required all fields', setError);
+
+        if (!username.trim() || username.length < 3) return updateError('Invalid name!', setError);
+
+        if (!isValidEmail(email)) return updateError('Invalid email!', setError);
+
+        if (!password.trim() || password.length < 8) return updateError('password is less then 8 character!', setError);
+
+        return true;
+    }
+
+    const submitForm = () => {
+        if (isValidForm()) {
+            console.log(userInfo);
+            return true
+        }
+        return false;
+    }
+
     const [passSet, setPassSet] = useState(false);
     var passEye;
     if (passSet) {
@@ -29,16 +78,18 @@ export default function Login({ navigation }) {
                     <Text style={styles.text}>Username</Text>
                     <TextInput
                         style={styles.textfild}
+                        value={username}
+                        onChangeText={(value) => handeOnChangeText(value, 'username')}
                         placeholder="Username"
                         selectionColor={'black'}
-                        value={userName}
-                        onChangeText={usernameText => setuserName(usernameText)}
                     />
                 </View>
                 <View style={styles.containerInfo}>
                     <Text style={styles.text}>Email</Text>
                     <TextInput
                         style={styles.textfild}
+                        value={email}
+                        onChangeText={(value) => handeOnChangeText(value, 'email')}
                         placeholder="Email"
                         autoCapitalize="none"
                         selectionColor={'black'}
@@ -49,6 +100,8 @@ export default function Login({ navigation }) {
                     <View>
                         <TextInput
                             style={styles.textfildPass}
+                            value={password}
+                            onChangeText={(value) => handeOnChangeText(value, 'password')}
                             placeholder="Password"
                             selectionColor={'black'}
                             autoCapitalize="none"
@@ -61,7 +114,7 @@ export default function Login({ navigation }) {
                 </View>
             </View>
             <Pressable
-                onPress={()=>navigation.navigate("BottomHome")}
+                onPress={() => submitForm()?navigation.navigate("BottomHome"):null}
                 style={styles.submit}
                 underlayColor='#fff'
                 android_ripple={{ color: '#fff' }}>
@@ -81,7 +134,7 @@ export default function Login({ navigation }) {
                 <GoogleSignin />
             </View>
             <View style={{ marginTop: 15, marginBottom: 15 }}>
-                <Text style={{ marginLeft: 'auto', marginRight: 'auto' }}>Don't have account? <Text style={{ fontWeight: '600' ,color:'#68a0cf'}} onPress={() => navigation.navigate('Register')}>Register</Text></Text>
+                <Text style={{ marginLeft: 'auto', marginRight: 'auto' }}>Don't have account? <Text style={{ fontWeight: '600', color: '#68a0cf' }} onPress={() => navigation.navigate('Register')}>Register</Text></Text>
             </View>
         </ScrollView>
     );
