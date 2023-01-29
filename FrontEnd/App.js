@@ -14,6 +14,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useEffect } from 'react';
 
+// import { AlanView } from '@alan-ai/alan-sdk-react-native';
+
+
 
 const MyTheme = {
   dark: false,
@@ -40,7 +43,7 @@ export default function App() {
   return (
     <>
       <NavigationContainer theme={MyTheme}>
-        <Stack.Navigator initialRouteName="onSwipe" screenOptions={{ headerShown: false }}>
+        <Stack.Navigator initialRouteName="BottomHome" screenOptions={{ headerShown: false }}>
           <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="Verify" component={Verify} />
           <Stack.Screen name="Register" component={Register} />
@@ -54,6 +57,8 @@ export default function App() {
           <Stack.Screen name="BoostPost" component={BoostPost} />
         </Stack.Navigator>
       </NavigationContainer>
+
+      {/* <AlanView projectid={'188cde14e1691278095e7d637632cb512e956eca572e1d8b807a3e2338fdd0dc/stage'} /> */}
     </>
   );
 } 

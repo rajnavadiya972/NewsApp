@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View,SafeAreaView  } from 'react-native';
 import React, { useState } from 'react';
 import { SearchBar } from 'react-native-elements';
+import { AlanView } from '@alan-ai/alan-sdk-react-native';
 
 const Home = () => {
   const [search, setSearch] = useState("");
@@ -23,6 +24,7 @@ const Home = () => {
           inputContainerStyle={{ backgroundColor: 'white', borderWidth: 1, borderRadius: 20, borderColor: 'grey' }}
           placeholderTextColor={'#111111'}
         />
+        <AlanView projectid={'188cde14e1691278095e7d637632cb512e956eca572e1d8b807a3e2338fdd0dc/stage'}/>
       </View>
     </SafeAreaView>
   );
